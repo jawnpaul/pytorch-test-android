@@ -6,12 +6,19 @@ plugins {
 
 }
 
+repositories {
+    jcenter()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+}
+
 android {
     compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.example.pytorchtest"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -52,4 +59,8 @@ dependencies {
 
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //PyTorch
+    implementation 'org.pytorch:pytorch_android:1.6.0-SNAPSHOT'
+    implementation 'org.pytorch:pytorch_android_torchvision:1.6.0-SNAPSHOT'
 }

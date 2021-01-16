@@ -37,20 +37,31 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="4dp"
-                        android:text="avg:157ms" />
+                        android:fontFamily="@font/roboto_thin"
+                        android:text="avg:157ms"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@id/avg_textview"
                         android:layout_marginEnd="-90dp"
-                        android:text="6.6FPS" />
+                        android:id="@+id/frames_per_second_textview"
+                        android:fontFamily="@font/roboto_thin"
+                        android:text="6.6FPS"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="151ms" />
+                        android:id="@+id/analysis_duration_textview"
+                        android:fontFamily="@font/roboto_thin"
+                        android:text="151ms"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -63,13 +74,19 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_marginRight="4dp"
-                        android:text="Classification" />
+                        android:fontFamily="@font/roboto"
+                        android:text="Classification"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="Score" />
+                        android:fontFamily="@font/roboto"
+                        android:text="Score"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -99,8 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/result_one_textview"
                         android:layout_alignParentBottom="true"
-                        android:max="100"
-                        android:progress="30" />
+                        android:progressDrawable="@drawable/result_row_progress_bar_top1" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -130,8 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/result_two_textview"
                         android:layout_alignParentBottom="true"
-                        android:max="100"
-                        android:progress="30" />
+                        android:progressDrawable="@drawable/result_row_progress_bar_top2" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -161,8 +176,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/result_three_textview"
                         android:layout_alignParentBottom="true"
-                        android:max="100"
-                        android:progress="30" />
+                        android:progressDrawable="@drawable/result_row_progress_bar_top3" />
                 </RelativeLayout>
 
             </LinearLayout>

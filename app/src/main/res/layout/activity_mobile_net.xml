@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp">
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/avg_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -40,14 +40,15 @@
                         android:fontFamily="@font/roboto_thin"
                         android:text="avg:157ms"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="14sp" />-->
 
                     <TextView
+                        android:id="@+id/frames_per_second_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@id/avg_textview"
+                        android:layout_alignStart="@id/analysis_duration_textview"
+                        android:layout_marginStart="-97dp"
                         android:layout_marginEnd="-90dp"
-                        android:id="@+id/frames_per_second_textview"
                         android:fontFamily="@font/roboto_thin"
                         android:text="6.6FPS"
                         android:textColor="@color/black"

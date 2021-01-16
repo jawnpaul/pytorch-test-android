@@ -224,7 +224,7 @@ class MobileNetActivity : AppCompatActivity() {
 
             if (movingAverageQueue.size == 10) {
                 val avg = movingAverageSum.div(10).toFloat()
-                binding.avgTextview.text = String().toAvgMS(avg)
+                //binding.avgTextview.text = String().toAvgMS(avg)
             }
         }
 

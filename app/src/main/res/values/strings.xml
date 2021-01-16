@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PyTorchTest</string>
+    <string name="mobile_net_title">Image Classification Quantized MobileNETV2</string>
+    <string name="res_net_title">Image Classification Resnet18</string>
+    <string name="new_line">\u000A</string>
+    <string name="mobile_net_helper">Inference in int8.\nInput is float32 tensor of\n1x3x224x224 shape</string>
+    <string name="res_net_helper">Default TorchVision pretrained\nResnet18 model.\nInput is float32 tensor of\n1x3x224x224 shape</string>
+    <string name="choose_model_to_run">Choose Model to run</string>
 </resources>

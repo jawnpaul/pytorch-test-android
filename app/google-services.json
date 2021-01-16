@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126111772050",
+    "project_id": "pytorchtestandroid",
+    "storage_bucket": "pytorchtestandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126111772050:android:fefafb59ad64bef576a54b",
+        "android_client_info": {
+          "package_name": "com.example.pytorchtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126111772050-09o0b54mk9qscmih6q2s6fkcfo5k8n0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArliyPYoQVPjEHgAUMyK0wR8KRg2HvSAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126111772050-09o0b54mk9qscmih6q2s6fkcfo5k8n0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

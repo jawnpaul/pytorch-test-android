@@ -50,4 +50,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

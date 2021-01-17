@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.pytorchtest.databinding.ActivityMainBinding
 import com.example.pytorchtest.mobilenet.MobileNetActivity
+import com.example.pytorchtest.resnet.ResNetActivity
 
 private lateinit var binding: ActivityMainBinding
 
@@ -17,6 +18,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.mobileNetCardview.setOnClickListener {
             val intent = Intent(this, MobileNetActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.resNetCardview.setOnClickListener {
+            val intent = Intent(this, ResNetActivity::class.java)
             startActivity(intent)
         }
     }

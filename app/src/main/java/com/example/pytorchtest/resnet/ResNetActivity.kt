@@ -86,7 +86,7 @@ class ResNetActivity : AppCompatActivity() {
                 .also {
                     it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { luma ->
                         //Timber.d("Average luminosity: $luma")
-                        showResults(doSomething(luma))
+                        showResults(runAnalysisOnImage(luma))
                     })
                 }
 
@@ -139,32 +139,32 @@ class ResNetActivity : AppCompatActivity() {
         }
     }
 
-    private fun showResults(resultt: AnalysisResult) {
+    private fun showResults(analysisResult: AnalysisResult) {
         runOnUiThread {
 
-            binding.resNetResultOneTextview.text = resultt.topNClassNames[0]
-            binding.resNetResultTwoTextview.text = resultt.topNClassNames[1]
-            binding.resNetResultThreeTextview.text = resultt.topNClassNames[2]
+            binding.resNetResultOneTextview.text = analysisResult.topNClassNames[0]
+            binding.resNetResultTwoTextview.text = analysisResult.topNClassNames[1]
+            binding.resNetResultThreeTextview.text = analysisResult.topNClassNames[2]
 
             binding.resNetResultOneProbTextview.text =
-                String().toTwoDecimalPlaces(resultt.topNScores[0])
+                String().toTwoDecimalPlaces(analysisResult.topNScores[0])
             binding.resNetResultTwoProbTextview.text =
-                String().toTwoDecimalPlaces(resultt.topNScores[1])
+                String().toTwoDecimalPlaces(analysisResult.topNScores[1])
             binding.resNetResultThreeProbTextview.text =
-                String().toTwoDecimalPlaces(resultt.topNScores[2])
+                String().toTwoDecimalPlaces(analysisResult.topNScores[2])
 
 
             binding.resNetAnalysisDurationTextview.text =
-                String().toMS(resultt.moduleForwardDuration)
+                String().toMS(analysisResult.moduleForwardDuration)
 
             binding.resNetFramesPerSecondTextview.text =
-                String().toFPS(1000f / resultt.analysisDuration)
+                String().toFPS(1000f / analysisResult.analysisDuration)
 
         }
 
     }
 
-    private fun doSomething(image: Image?): AnalysisResult {
+    private fun runAnalysisOnImage(image: Image?): AnalysisResult {
 
         val moduleAssetName = File(utils.assetFilePath(this, "resnet18.pt"))
         val module = Module.load(moduleAssetName.toString())
@@ -204,13 +204,12 @@ class ResNetActivity : AppCompatActivity() {
         }
         val analysisDuration = SystemClock.elapsedRealtime() - startTime
 
-        val analysisResult = AnalysisResult(
+        return AnalysisResult(
             topKClassNames,
             topKScores,
             moduleForwardDuration,
             analysisDuration
         )
-        return analysisResult
     }
 
     companion object {

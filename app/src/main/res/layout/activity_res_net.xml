@@ -30,17 +30,6 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp">
 
-                    <!--<TextView
-                        android:id="@+id/avg_textview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginRight="4dp"
-                        android:fontFamily="@font/roboto_thin"
-                        android:text="avg:157ms"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />-->
-
                     <TextView
                         android:id="@+id/res_net_frames_per_second_textview"
                         android:layout_width="wrap_content"

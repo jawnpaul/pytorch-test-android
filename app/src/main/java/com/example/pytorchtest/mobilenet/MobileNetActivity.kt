@@ -25,7 +25,6 @@ import org.pytorch.Tensor
 import org.pytorch.torchvision.TensorImageUtils
 import timber.log.Timber
 import java.io.File
-import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -44,9 +43,6 @@ class MobileNetActivity : AppCompatActivity() {
 
     private val TENSOR_HEIGHT: Int = 224
     private val TENSOR_WIDTH: Int = 224
-
-    private var movingAverageSum: Long = 0L
-    private var movingAverageQueue: Queue<Long> = LinkedList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,7 +86,7 @@ class MobileNetActivity : AppCompatActivity() {
                 .also {
                     it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { luma ->
                         //Timber.d("Average luminosity: $luma")
-                        showResults(doSomething(luma))
+                        showResults(runAnalysisOnImage(luma))
                     })
                 }
 
@@ -145,7 +141,7 @@ class MobileNetActivity : AppCompatActivity() {
         }
     }
 
-    private fun doSomething(image: Image?): AnalysisResult {
+    private fun runAnalysisOnImage(image: Image?): AnalysisResult {
 
         val moduleAssetName = File(utils.assetFilePath(this, "mobilenet_v2.pt"))
         val module = Module.load(moduleAssetName.toString())
@@ -185,47 +181,36 @@ class MobileNetActivity : AppCompatActivity() {
         }
         val analysisDuration = SystemClock.elapsedRealtime() - startTime
 
-        val analysisResult = AnalysisResult(
+        return AnalysisResult(
             topKClassNames,
             topKScores,
             moduleForwardDuration,
             analysisDuration
         )
-        return analysisResult
     }
 
 
-    private fun showResults(resultt: AnalysisResult) {
+    private fun showResults(analysisResult: AnalysisResult) {
         runOnUiThread {
 
-            movingAverageSum += resultt.analysisDuration
-            movingAverageQueue.add(resultt.analysisDuration)
+            binding.resultOneTextview.text = analysisResult.topNClassNames[0]
+            binding.resultTwoTextview.text = analysisResult.topNClassNames[1]
+            binding.resultThreeTextview.text = analysisResult.topNClassNames[2]
 
-            if (movingAverageQueue.size > 10) {
-                movingAverageSum -= movingAverageQueue.remove()
-            }
-
-            binding.resultOneTextview.text = resultt.topNClassNames[0]
-            binding.resultTwoTextview.text = resultt.topNClassNames[1]
-            binding.resultThreeTextview.text = resultt.topNClassNames[2]
-
-            binding.resultOneProbTextview.text = String().toTwoDecimalPlaces(resultt.topNScores[0])
-            binding.resultTwoProbTextview.text = String().toTwoDecimalPlaces(resultt.topNScores[1])
+            binding.resultOneProbTextview.text =
+                String().toTwoDecimalPlaces(analysisResult.topNScores[0])
+            binding.resultTwoProbTextview.text =
+                String().toTwoDecimalPlaces(analysisResult.topNScores[1])
             binding.resultThreeProbTextview.text =
-                String().toTwoDecimalPlaces(resultt.topNScores[2])
+                String().toTwoDecimalPlaces(analysisResult.topNScores[2])
 
 
-            binding.analysisDurationTextview.text = String().toMS(resultt.moduleForwardDuration)
+            binding.analysisDurationTextview.text =
+                String().toMS(analysisResult.moduleForwardDuration)
 
-            binding.framesPerSecondTextview.text = String().toFPS(1000f / resultt.analysisDuration)
+            binding.framesPerSecondTextview.text =
+                String().toFPS(1000f / analysisResult.analysisDuration)
 
-            movingAverageSum += resultt.analysisDuration
-            movingAverageQueue.add(resultt.analysisDuration)
-
-            if (movingAverageQueue.size == 10) {
-                val avg = movingAverageSum.div(10).toFloat()
-                //binding.avgTextview.text = String().toAvgMS(avg)
-            }
         }
 
     }

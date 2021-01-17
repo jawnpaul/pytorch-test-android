@@ -17,6 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:padding="16dp"
             android:text="@string/choose_model_to_run"
             android:textSize="30sp" />
 
@@ -24,7 +26,7 @@
             android:id="@+id/mobile_net_cardview"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             app:cardCornerRadius="8dp">
 
             <RelativeLayout
@@ -33,12 +35,12 @@
 
                 <ImageView
                     android:id="@+id/mobile_net_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
                     android:layout_margin="10dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/ic_tech" />
 
                 <TextView
                     android:id="@+id/mobile_net_title_textview"
@@ -68,7 +70,7 @@
             android:id="@+id/res_net_cardview"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="0dp"
             app:cardCornerRadius="8dp">
 
             <RelativeLayout
@@ -77,12 +79,12 @@
 
                 <ImageView
                     android:id="@+id/res_net_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
                     android:layout_margin="10dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/ic_tech" />
 
                 <TextView
                     android:id="@+id/res_net_title_textview"
